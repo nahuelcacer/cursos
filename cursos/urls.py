@@ -15,13 +15,14 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
 from django.urls import path, include
 from cursos.views import Index
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',Index),
+    path('',Index, name="index"),
     path('administracion/', include('apps.administracion.urls'))
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

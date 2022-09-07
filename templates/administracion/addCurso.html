@@ -1,7 +1,21 @@
 {% extends 'index.html' %}
 {% load static %}
-{% block contenido %}
-    {% comment %} {{form}} {% endcomment %}
-   
-    <div>asdasdassssss</div>
+{% block content %}
+{% load bootstrap3 %}
+
+
+
+    <div>
+        <form action="" method="POST" enctype="multipart/form-data" class="form-group m-4 p-4">
+            {% csrf_token %}
+        {{form.media}}
+        {% bootstrap_form form %}
+        <input type="submit" value="Enviar"></input>
+        </form>
+    </div>
+    <div>
+        {% for i in cursos%}
+        <div>{{i.nombre}}</div>
+        {%endfor%}
+    </div>
 {% endblock %}

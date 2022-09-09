@@ -1,3 +1,4 @@
+from urllib import request
 from django.shortcuts import render, redirect
 from multiprocessing import context
 from django.views import View
@@ -8,9 +9,10 @@ from apps.administracion.models import Cursos
 
 class Administrar(View):
     def get(self,request):
-        cursos = Cursos.objects.all()
-        print(cursos)
         form = Administracion()
+        cursos = Cursos.objects.all()       
+        for i in cursos:
+            print(i.curso_estado())
         context = {
             'form': form,
             'cursos':cursos
@@ -18,8 +20,12 @@ class Administrar(View):
 
         return render(request, 'administracion/addCurso.html', context)
 
+
+
     def post(self,request):
-        form = Administracion(request.POST)
-        if form.is_valid():
-            form.save()
-        return redirect('apps.administracion:addCurso')  
+        if request.method == 'POST':
+            form = Administracion(request.POST,request.FILES)
+            if form.is_valid():
+                form.save()
+        return redirect('apps.administracion:addCurso')
+            

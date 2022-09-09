@@ -16,7 +16,6 @@ class Administracion(forms.ModelForm):
                     pass
                 elif field.label == "Imagen":
                     field.label = "Banner o Imagen"
-                    
                 elif field.label == "Dis imagen":
                     field.label = "Imagen del disertante"
                 else:

@@ -6,16 +6,16 @@
 
 
     <div>
-        <form action="" method="POST" enctype="multipart/form-data" class="form-group m-4 p-4">
+        <form action="{% url 'apps.administracion:addCurso' %}" method="POST" enctype="multipart/form-data" class="form-group m-4 p-4">
             {% csrf_token %}
-        {{form.media}}
-        {% bootstrap_form form %}
+            {{form.media}}
+            {% bootstrap_form form %}
         <input type="submit" value="Enviar"></input>
         </form>
     </div>
     <div>
         {% for i in cursos%}
-        <div>{{i.nombre}}</div>
+        <div>{{i.nombre}} {{i.precio}} fecha finalizacion: {{i.fecha_finalizacion}} fecha curso {{i.fecha_curso}}</div>
         {%endfor%}
     </div>
 {% endblock %}

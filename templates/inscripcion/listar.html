@@ -2,7 +2,30 @@
 {% block content %}
 {% load bootstrap3 %}
 
-    {% for i in inscriptos %}
-    <div>{{i.nombre}} {{i.curso.nombre}}</div>
-    {%endfor%}
+<div class="container">
+    <h2>{{curso.nombre}} {{fecha}}</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <td scope="col">#</td>
+                <td scope="col">Nombre</td>
+                <td scope="col">Dni</td>
+                <td scope="col">Email</td>
+                <td scope="col">Datos de pago</td>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for i in inscriptos %}
+            <tr>
+                <td>{{i.id}}</td>
+                <td>{{i.nombre}}</td>
+                <td>{{i.dni}}</td>
+                <td>{{i.email}}</td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

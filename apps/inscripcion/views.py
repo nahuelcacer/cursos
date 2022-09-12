@@ -60,9 +60,13 @@ class Inscribirse(View):
 
 class Listar(View):
     def get(self,request,id):
-        inscriptos = Inscripciones.objects.filter(id=id)
+        inscriptos = Inscripciones.objects.filter(curso=id)
+        curso = Cursos.objects.get(id=id)
+        fecha = curso.fecha_curso.strftime('%d/%m/%Y')
         context = {
-            'inscriptos':inscriptos
+            'inscriptos':inscriptos,
+            'curso':curso,
+            'fecha':fecha
         }
         print(inscriptos)
         return render(request,'inscripcion/listar.html', context)

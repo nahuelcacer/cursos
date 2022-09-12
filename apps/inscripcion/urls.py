@@ -5,7 +5,6 @@ app_name = 'apps.inscripcion'
 
 
 urlpatterns = [
-    path('',views.Inscribirse.as_view(), name="inscribirse"),
-    path('aprobado/',views.pago, name="aprobado")
+    path('<int:id>',views.Inscribirse.as_view(), name="inscribirse"),
 
 ]

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container shadow bg-body rounded">
+    {% comment %} informacion del curso {% endcomment %}
+    <div>
+        <h1>{{curso.nombre}}</h1>
+        <p>{{curso.desc}}</p>
+        <p>{{fecha}}</p>
+    </div>
+    {% comment %} informacion del disertante {% endcomment %}
+    <div>
+        <p>{{curso.disertante}}</p>
+        
+    </div>
+    
+</div>
+
+{% endblock %}

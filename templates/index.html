@@ -4,8 +4,14 @@
 {% block content %}
 
 <div class="container">
+    
     {% for i in cursos %}
+        {% if i.fecha_curso > ahora %}
         <a href={% url 'apps.inscripcion:inscribirse' i.id %}>{{i.nombre}} {{i.fecha_curso}}</a>
+        {% else %}
+        <p>{{i.nombre}} {{i.fecha_curso}}</p>
+        {% endif %}
+        
     {%endfor%}
 </div>
 {% endblock %}

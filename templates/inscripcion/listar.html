@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap3 %}
+
+    {% for i in inscriptos %}
+    <div>{{i.nombre}} {{i.curso.nombre}}</div>
+    {%endfor%}
+{% endblock %}

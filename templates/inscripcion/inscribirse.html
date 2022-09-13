@@ -4,7 +4,7 @@
 
 
 <div class="container shadow bg-body rounded">
-    <a href="{% url 'apps.inscripcion:listar' curso.id %}" class="btn btn-secondary">Ver inscriptos</a>
+    {% if user.is_authenticated %} <a href="{% url 'apps.inscripcion:listar' curso.id %}" class="btn btn-secondary">Ver inscriptos</a>{%endif%}
     {% comment %} informacion del curso {% endcomment %}
     <div>
         <h1>{{curso.nombre}}</h1>

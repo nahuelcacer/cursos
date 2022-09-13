@@ -10,8 +10,7 @@ from datetime import date
 def Index(request):
     cursos = Cursos.objects.all()
     ahora = date.today()
-
-    print(ahora)
+       
     context = {
         'cursos':cursos,
         'ahora':ahora

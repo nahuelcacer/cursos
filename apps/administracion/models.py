@@ -1,3 +1,4 @@
+from distutils.command.upload import upload
 from django.db import models
 
 # Create your models here.
@@ -10,8 +11,8 @@ class Cursos(models.Model):
     fecha_curso = models.DateField() # fecha del curso
     fecha_finalizacion = models.DateField() # fecha de finalizacion de inscripcion
     precio = models.CharField(max_length=60)# precio
-    dis_imagen = models.ImageField(null=True)# foto del disertante 
-    imagen = models.ImageField(null=True) # imagen adicional 
+    dis_imagen = models.ImageField(upload_to="disertantes/",null=True)# foto del disertante 
+    imagen = models.ImageField(upload_to="imagen/", null=True) # imagen adicional 
     
 
     def curso_estado(self):

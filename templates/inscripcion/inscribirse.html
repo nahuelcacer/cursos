@@ -3,22 +3,31 @@
 {% load bootstrap3 %}
 
 
-<div class="container shadow bg-body rounded">
+<div class="container shadow bg-body rounded" style="width:45rem">
     <!-- {% if user.is_authenticated %} <a href="{% url 'apps.inscripcion:listar' curso.id %}" class="btn btn-secondary">Ver inscriptos</a>{%endif%} -->
     {% comment %} informacion del curso {% endcomment %}
-    <div>
-        <h1 class=" d-flex justify-content-center">{{curso.nombre}}</h1>
-        <p>{{curso.desc}}</p>
-        <p>{{fecha}}</p>
-    </div>
-    {% comment %} informacion del disertante {% endcomment %}
-    <div>
-        <p>{{curso.disertante}}</p>
-        
-    </div>
-    <!-- formulario de inscripcion -->
     <div class="container">
-        <form action= "{% url 'apps.inscripcion:inscribirse' curso.id %}" method="POST" enctype="multipart/form-data" class="form-group m-4 p-4">
+
+        <div>
+            <h1 class=" d-flex justify-content-center">{{curso.nombre}}</h1>
+        </div>
+        {% comment %} informacion del disertante {% endcomment %}
+        <div class="row">
+            <div class="col">
+                
+                <img src="{{curso.dis_imagen.url}}"  style="width:20rem; border-radius:50%"></img>
+                <p style="font-family:calibri">{{curso.disertante}}</p>
+            </div>
+            <div class="col">
+                <p>{{fecha}}</p>
+                <p>{{curso.desc}}</p>
+            </div>
+            
+            
+        </div>
+    <!-- formulario de inscripcion -->
+        <h3>Realizar inscripcion</h3>
+        <form action= "{% url 'apps.inscripcion:inscribirse' curso.id %}" method="POST" enctype="multipart/form-data" class="form-group">
             {% csrf_token %}
             {{form.media}}
             {% bootstrap_form form %}

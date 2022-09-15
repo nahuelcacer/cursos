@@ -7,8 +7,7 @@ from apps.inscripcion.models import Inscripciones
 from django.urls import reverse
 from django.http import HttpResponse
 from apps.inscripcion.forms import Inscripcion
-import urllib
- 
+# from formtools.wizard.views import SessionWizardView
 # SDK de Mercado Pago
 import mercadopago
 # # Agrega credenciales
@@ -25,8 +24,8 @@ class Inscribirse(View):
             'curso':curso,
             'fecha':fecha,
             'form':form
+            
         }
-
         return render(request, 'inscripcion/inscribirse.html', context)
     
     def post(self,request,id):
@@ -60,26 +59,5 @@ class Pay(View):
     def get(self,request,id):
         curso = Cursos.objects.get(id=id)
        
-        preference_data = {
-            "items": [
-                {
-                    "title": curso.nombre,
-                    "quantity": 1,
-                    "unit_price": 1
-                    #  "unit_price": int(cursos.precio)
-                }
-            ],
-            "back_urls": 
-                                {
-                                    "success": "http://127.0.0.1:8000/inscripcion/",
-                                    "failure": "http://www.failure.com"                              
-                                },
-        
-            "auto_return": "approved",
-            "binary_mode": True
-        }
-
-        preference_response = sdk.preference().create(preference_data)
-        preference = preference_response["response"]
         # print(preference)
         return render(request,'inscripcion/pay.html')

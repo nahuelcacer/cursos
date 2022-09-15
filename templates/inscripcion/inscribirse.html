@@ -3,6 +3,24 @@
 {% load bootstrap3 %}
 
 
+<!-- <script src="https://sdk.mercadopago.com/js/v2"></script>
+<div class="cho-container"></div>
+<script>
+  const mp = new MercadoPago('TEST-cf6bd2c0-506d-4dc6-9887-f81ac44b86e0', {
+    locale: 'es-AR'
+  });
+
+  mp.checkout({
+    preference: {
+      id: "{{preference1.id}}"
+    },
+    render: {
+      container: '.cho-container',
+      label: 'Pagar',
+    }
+  });
+</script> -->
+
 <div class="container shadow bg-body rounded" style="width:45rem">
     <!-- {% if user.is_authenticated %} <a href="{% url 'apps.inscripcion:listar' curso.id %}" class="btn btn-secondary">Ver inscriptos</a>{%endif%} -->
     {% comment %} informacion del curso {% endcomment %}

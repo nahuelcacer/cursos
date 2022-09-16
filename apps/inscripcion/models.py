@@ -1,3 +1,5 @@
+from pickle import TRUE
+from tkinter import CASCADE
 from django.db import models
 from apps.administracion.models import Cursos
 
@@ -11,6 +13,7 @@ class Inscripciones(models.Model):
     #datos_pago
 
 class Pago(models.Model):
+    nombre = models.ForeignKey(Inscripciones, on_delete=models.SET_NULL, null=True)
     payment_id = models.CharField(max_length=250)
     status = models.CharField(max_length=250)
     payment_type = models.CharField(max_length=250)
